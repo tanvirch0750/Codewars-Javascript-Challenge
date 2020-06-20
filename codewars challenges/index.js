@@ -99,3 +99,57 @@
 
   partialKeys({ abcd: 1 });
 }
+
+// todo -> (6) Constant Value
+{
+  /*
+  * Given a lowercase string that has alphabetic characters only and no spaces, return the    highest value of consonant substrings. Consonants are any letters of the alphabet except "aeiou".
+
+  * We shall assign the following values: a = 1, b = 2, c = 3, .... z = 26.
+
+  *  For example, for the word "zodiacs", let's cross out the vowels. We get: "z o d ia cs"
+  */
+
+  function chaToValue(c) {
+    return c.charCodeAt(0) - 96;
+  }
+
+  function addUpSubstring(str) {
+    return str
+      .split("")
+      .map(chaToValue)
+      .reduce((acc, item) => (acc += item), 0);
+  }
+
+  function solve(s) {
+    return Math.max(
+      ...s
+        .replace(/[aeiou]+/g, " ")
+        .trim()
+        .split(" ")
+        .map(addUpSubstring)
+    );
+  }
+
+  // solution from others
+  {
+    const solve = (s) =>
+      s.split(/[aeiou]+/).reduce(
+        (s, n) =>
+          Math.max(
+            s,
+            n.split("").reduce((a, b) => a + b.charCodeAt(0) - 96, 0)
+          ),
+        0
+      );
+  }
+  {
+    function solve(s) {
+      return Math.max(
+        ...s
+          .match(/[^aeiou]+/g)
+          .map((x) => [...x].reduce((s, v) => s + v.charCodeAt() - 96, 0))
+      );
+    }
+  }
+}
