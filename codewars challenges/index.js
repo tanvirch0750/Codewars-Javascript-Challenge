@@ -172,3 +172,48 @@
     return str.split("").reverse().join("");
   }
 }
+
+// todo -> (8) Does my number look big in this?
+{
+  /*
+ * A Narcissistic Number is a number which is the sum of its own digits, each raised to the power of the number of digits in a given base. In this Kata, we will restrict ourselves to decimal (base 10).
+
+ * For example, take 153 (3 digits):
+  1^3 + 5^3 + 3^3 = 1 + 125 + 27 = 153
+
+  *  and 1634 (4 digits):
+  1^4 + 6^4 + 3^4 + 4^4 = 1 + 1296 + 81 + 256 = 1634
+
+ * The Challenge:
+ * Your code must return true or false depending upon whether the given number is a Narcissistic number in base 10.
+
+ * Error checking for text strings or other invalid inputs is not required, only valid integers will be passed into the function.
+  */
+
+  function narcissistic(value) {
+    const valueStr = `${value}`;
+    const length = valueStr.length;
+    return (
+      valueStr
+        .split("")
+        .reduce((acc, item) => (acc += Math.pow(+item, length)), 0) === value
+    );
+  }
+}
+
+// todo -> (9) Find the missing number
+{
+  /*
+  #Find the missing letter
+
+  Write a method that takes an array of consecutive (increasing) letters as input and that returns the missing letter in the array.
+
+  You will always get an valid array. And it will be always exactly one letter be missing. The length of the array will always be at least 2.
+  The array will always contain letters in only one case.
+
+  Example:
+
+  ['a','b','c','d','f'] -> 'e' ['O','Q','R','S'] -> 'P'
+  */
+  function findMissingLetter(array) {}
+}
