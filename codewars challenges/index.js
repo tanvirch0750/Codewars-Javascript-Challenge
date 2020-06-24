@@ -201,7 +201,7 @@
   }
 }
 
-// todo -> (9) Find the missing number
+// todo -> (9) Find the missing Letter
 {
   /*
   #Find the missing letter
@@ -215,5 +215,43 @@
 
   ['a','b','c','d','f'] -> 'e' ['O','Q','R','S'] -> 'P'
   */
-  function findMissingLetter(array) {}
+  function findMissingLetter(array) {
+    for (let i = 0; i < array.length - 1; i++) {
+      const current = array[i].charCodeAt(0);
+      const next = array[i + 1].charCodeAt(0);
+      if (current + 1 !== next) {
+        return String.fromCharCode(current + 1);
+      }
+    }
+  }
+  findMissingLetter(["a", "b", "c", "d", "f"]);
+}
+
+// todo -> (10) IP Validation
+{
+  /*
+  Write an algorithm that will identify valid IPv4 addresses in dot-decimal format. IPs should be considered valid if they consist of four octets, with values between 0 and 255, inclusive.
+
+  Input to the function is guaranteed to be a single string.
+
+  Examples
+  Valid inputs:
+
+  1.2.3.4
+  123.45.67.89
+  Invalid inputs:
+
+  1.2.3
+  1.2.3.4.5
+  123.456.78.90
+  123.045.067.089
+*/
+  function isValidIP(str) {
+    return str.split(".").filter(isValidNum).length === 4;
+  }
+
+  function isValidNum(n) {
+    if ((/^0/.test(n) && +n !== 0) || n === "00" || n === "000") return false;
+    return +n >= 0 && +n <= 255 && /^\d{1,3}$/.test(n);
+  }
 }
